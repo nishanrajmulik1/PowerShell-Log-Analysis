@@ -54,7 +54,3 @@ PowerShell-Log-Analysis/
 
 ---
 
-## 📸 Screenshots
-
-![Detection Output](screenshots/detection_output.png)
-
