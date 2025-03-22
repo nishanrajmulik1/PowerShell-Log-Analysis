@@ -56,7 +56,5 @@ PowerShell-Log-Analysis/
 
 ## 📸 Screenshots
 
-*(Optional)* Add screenshots to the `screenshots/` folder and display them here:
-```markdown
 ![Detection Output](screenshots/detection_output.png)
 
