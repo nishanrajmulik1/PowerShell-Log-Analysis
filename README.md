@@ -1,53 +1,46 @@
-# PowerShell Log Analysis – Windows Event Viewer Monitoring
+# 🧪 PowerShell Log Analysis
 
-This project explores security monitoring using PowerShell by enabling logging, simulating attacks, and retrieving logs.
+## 📌 Project Overview
 
-## 📌 Key Features
-- Enables **PowerShell Module Logging, Script Block Logging, and Transcription**.
-- Simulates an **attack reconnaissance** with `Get-LocalUser` to list system accounts.
-- Detects suspicious activity using **Windows Event Viewer (Event ID 4104)**.
-- Retrieves logs using PowerShell commands like `Get-WinEvent`.
+**PowerShell-Log-Analysis** is a blue team project focused on detecting and analyzing suspicious PowerShell activity within Windows environments. This project uses native Windows Event Logs, parsed and monitored using PowerShell scripts, to identify behaviors related to reconnaissance, execution, and lateral movement.
 
-## 🛠 Tools & Technologies
-- PowerShell
-- Windows Event Viewer
-- Sysmon (Optional for deeper logging)
-- Security Monitoring & Threat Hunting
+The goal of this project is to simulate real-world attacks, capture PowerShell-based IOCs (Indicators of Compromise), and build a strong understanding of how attackers use PowerShell during exploitation phases.
 
-## 🚀 How to Use
+---
 
-1. **Enable PowerShell Logging**:  
-   - Open **Group Policy Editor** by running:  
-     ```
-     gpedit.msc
-     ```
-   - Navigate to:  
-     ```
-     Computer Configuration > Administrative Templates > Windows Components > Windows PowerShell
-     ```
-   - Enable:
-     - **Module Logging**
-     - **Script Block Logging**
-     - **Transcription**
+## 🛠️ Tools & Technologies
 
-2. **Simulate a Suspicious Activity**  
-   Run the following PowerShell command:
-   ```powershell
-   Get-LocalUser | Select-Object Name, Enabled
-   
-3. Detect Logs using Event Viewer or PowerShell
-   Retrieve logs from Event ID 4104:
-   ```powershell
-   Get-WinEvent -LogName "Microsoft-Windows-PowerShell/Operational" | Where-Object {$_.Id -eq 4104}
+- 💻 **PowerShell** (scripted log parsing & automation)
+- 📂 **Windows Event Viewer / Logs**
+- 🧠 **MITRE ATT&CK Framework**
+- 📊 **Event IDs Monitored**: 4104, 4688, 7045, 400, 403
+- 🔍 **Log Sources**: PowerShell Operational Logs, Security Logs
 
-4. Analyze the retrieved logs.
-   - Open Event Viewer (eventvwr.msc)
-   - Navigate to:
-   ```
-   Applications and Services Logs > Microsoft > Windows > PowerShell > Operational
-   ```
-   - Filter by Event ID 4104
-     
-## 📖 References
-- [Microsoft PowerShell Security Logging](https://learn.microsoft.com/en-us/powershell/)
-- [Sysmon Event Monitoring](https://docs.microsoft.com/en-us/sysinternals/)
+---
+
+## 🔍 Key Detection Use Cases
+
+| Event ID | Description | MITRE Technique |
+|----------|-------------|------------------|
+| 4104     | PowerShell script block logging | T1059.001 (PowerShell) |
+| 4688     | New process creation | T1059 / T1047 |
+| 7045     | Service installation | T1543.003 |
+| 400/403  | PowerShell engine start/stop | Execution tracking |
+
+---
+
+## 📁 Project Structure
+
+```bash
+PowerShell-Log-Analysis/
+├── logs/
+│   └── sample_logs.evtx
+├── scripts/
+│   └── parse-ps-logs.ps1
+│   └── detect-obfuscation.ps1
+├── IOC-list/
+│   └── suspicious-commands.txt
+├── screenshots/
+│   └── detection_output.png
+└── README.md
+
