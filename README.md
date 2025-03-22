@@ -43,4 +43,20 @@ PowerShell-Log-Analysis/
 ├── screenshots/
 │   └── detection_output.png
 └── README.md
+---
+
+## ✅ What I Learned
+
+- How attackers use PowerShell for stealthy execution
+- The importance of script block logging for detection
+- Writing detection logic in PowerShell based on event IDs and attacker behaviour
+- Mapping logs to MITRE ATT&CK techniques for threat classification
+
+---
+
+## 📸 Screenshots
+
+*(Optional)* Add screenshots to the `screenshots/` folder and display them here:
+```markdown
+![Detection Output](screenshots/detection_output.png)
 
